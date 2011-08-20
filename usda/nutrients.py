@@ -5,13 +5,15 @@ sources = {
     'food_groups': 'data/FD_GROUP.txt',
     'food': 'data/FOOD_DES.txt',
     'nutrients': 'data/NUTR_DEF.txt',
-    'units': 'data/WEIGHT.txt',
-    'footnotes': 'data/FOOTNOTE.txt',
-    'langdesc': 'data/LANGDESC.txt',
+    'weights': 'data/WEIGHT.txt',
+    #'footnotes': 'data/FOOTNOTE.txt',
+    #'langdesc': 'data/LANGDESC.txt',
     'data': 'data/NUT_DATA.txt',
 }
 
 data = {}
+nutrients = {}
+foods = {}
 
 for k,v in sources.iteritems():
     source = csv.reader(open(v, 'rb'), delimiter='^', quotechar='~')
@@ -19,6 +21,32 @@ for k,v in sources.iteritems():
     for i in source:
         data[k].append(i)
 
-# f = open('json/data.js', 'w' )
-# f.write('var data = ' + json.dumps(data['food_groups']) + ';')
-# f.close()
+# Nutrients
+"""
+for nut in data['nutrients']:
+    nutrients[nut[0]] = {
+        'name': nut[3],
+        'tagname': nut[2],
+        'unit': nut[1],
+        'benefit':[],
+    }
+"""
+
+# Food
+for food in data['food']:
+    foods[food[0]] = {
+        'name': food[2],
+        'foodgroup':food[1],
+        'nutrients':[],
+    }
+
+for item in data['data']:
+    nut = {
+        'id': item[1],
+        'amount': item[2],
+    }
+    foods[item[0]]['nutrients'].append(nut)
+
+f = open('json/data.js', 'w' )
+f.write('var data = ' + json.dumps(foods, indent=2) + ';')
+f.close()

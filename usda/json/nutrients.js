@@ -1,1 +1,878 @@
-var nutrients = [["203", "g", "PROCNT", "Protein", "2", "600"], ["204", "g", "FAT", "Total lipid (fat)", "2", "800"], ["205", "g", "CHOCDF", "Carbohydrate, by difference", "2", "1100"], ["207", "g", "ASH", "Ash", "2", "1000"], ["208", "kcal", "ENERC_KCAL", "Energy", "0", "300"], ["209", "g", "STARCH", "Starch", "2", "2200"], ["210", "g", "SUCS", "Sucrose", "2", "1600"], ["211", "g", "GLUS", "Glucose (dextrose)", "2", "1700"], ["212", "g", "FRUS", "Fructose", "2", "1800"], ["213", "g", "LACS", "Lactose", "2", "1900"], ["214", "g", "MALS", "Maltose", "2", "2000"], ["221", "g", "ALC", "Alcohol, ethyl", "1", "18200"], ["255", "g", "WATER", "Water", "2", "100"], ["257", "g", "", "Adjusted Protein", "2", "700"], ["262", "mg", "CAFFN", "Caffeine", "0", "18300"], ["263", "mg", "THEBRN", "Theobromine", "0", "18400"], ["268", "kJ", "ENERC_KJ", "Energy", "0", "400"], ["269", "g", "SUGAR", "Sugars, total", "2", "1500"], ["287", "g", "GALS", "Galactose", "2", "2100"], ["291", "g", "FIBTG", "Fiber, total dietary", "1", "1200"], ["301", "mg", "CA", "Calcium, Ca", "0", "5300"], ["303", "mg", "FE", "Iron, Fe", "2", "5400"], ["304", "mg", "MG", "Magnesium, Mg", "0", "5500"], ["305", "mg", "P", "Phosphorus, P", "0", "5600"], ["306", "mg", "K", "Potassium, K", "0", "5700"], ["307", "mg", "NA", "Sodium, Na", "0", "5800"], ["309", "mg", "ZN", "Zinc, Zn", "2", "5900"], ["312", "mg", "CU", "Copper, Cu", "3", "6000"], ["313", "mcg", "FLD", "Fluoride, F", "1", "6240"], ["315", "mg", "MN", "Manganese, Mn", "3", "6100"], ["317", "mcg", "SE", "Selenium, Se", "1", "6200"], ["318", "IU", "VITA_IU", "Vitamin A, IU", "0", "7500"], ["319", "mcg", "RETOL", "Retinol", "0", "7430"], ["320", "mcg_RAE", "VITA_RAE", "Vitamin A, RAE", "0", "7420"], ["321", "mcg", "CARTB", "Carotene, beta", "0", "7440"], ["322", "mcg", "CARTA", "Carotene, alpha", "0", "7450"], ["323", "mg", "TOCPHA", "Vitamin E (alpha-tocopherol)", "2", "7900"], ["324", "IU", "VITD", "Vitamin D", "0", "8750"], ["325", "mcg", "ERGCAL", "Vitamin D2 (ergocalciferol)", "1", "8710"], ["326", "mcg", "CHOCAL", "Vitamin D3 (cholecalciferol)", "1", "8720"], ["328", "mcg", "VITD", "Vitamin D (D2 + D3)", "1", "8700"], ["334", "mcg", "CRYPX", "Cryptoxanthin, beta", "0", "7460"], ["337", "mcg", "LYCPN", "Lycopene", "0", "7530"], ["338", "mcg", "LUT+ZEA", "Lutein + zeaxanthin", "0", "7560"], ["341", "mg", "TOCPHB", "Tocopherol, beta", "2", "8000"], ["342", "mg", "TOCPHG", "Tocopherol, gamma", "2", "8100"], ["343", "mg", "TOCPHD", "Tocopherol, delta", "2", "8200"], ["401", "mg", "VITC", "Vitamin C, total ascorbic acid", "1", "6300"], ["404", "mg", "THIA", "Thiamin", "3", "6400"], ["405", "mg", "RIBF", "Riboflavin", "3", "6500"], ["406", "mg", "NIA", "Niacin", "3", "6600"], ["410", "mg", "PANTAC", "Pantothenic acid", "3", "6700"], ["415", "mg", "VITB6A", "Vitamin B-6", "3", "6800"], ["417", "mcg", "FOL", "Folate, total", "0", "6900"], ["418", "mcg", "VITB12", "Vitamin B-12", "2", "7300"], ["421", "mg", "CHOLN", "Choline, total", "1", "7220"], ["428", "mcg", "MK4", "Menaquinone-4", "1", "8950"], ["429", "mcg", "VITK1D", "Dihydrophylloquinone", "1", "8900"], ["430", "mcg", "VITK1", "Vitamin K (phylloquinone)", "1", "8800"], ["431", "mcg", "FOLAC", "Folic acid", "0", "7000"], ["432", "mcg", "FOLFD", "Folate, food", "0", "7100"], ["435", "mcg_DFE", "FOLDFE", "Folate, DFE", "0", "7200"], ["454", "mg", "BETN", "Betaine", "1", "7270"], ["501", "g", "TRP_G", "Tryptophan", "3", "16300"], ["502", "g", "THR_G", "Threonine", "3", "16400"], ["503", "g", "ILE_G", "Isoleucine", "3", "16500"], ["504", "g", "LEU_G", "Leucine", "3", "16600"], ["505", "g", "LYS_G", "Lysine", "3", "16700"], ["506", "g", "MET_G", "Methionine", "3", "16800"], ["507", "g", "CYS_G", "Cystine", "3", "16900"], ["508", "g", "PHE_G", "Phenylalanine", "3", "17000"], ["509", "g", "TYR_G", "Tyrosine", "3", "17100"], ["510", "g", "VAL_G", "Valine", "3", "17200"], ["511", "g", "ARG_G", "Arginine", "3", "17300"], ["512", "g", "HISTN_G", "Histidine", "3", "17400"], ["513", "g", "ALA_G", "Alanine", "3", "17500"], ["514", "g", "ASP_G", "Aspartic acid", "3", "17600"], ["515", "g", "GLU_G", "Glutamic acid", "3", "17700"], ["516", "g", "GLY_G", "Glycine", "3", "17800"], ["517", "g", "PRO_G", "Proline", "3", "17900"], ["518", "g", "SER_G", "Serine", "3", "18000"], ["521", "g", "HYP", "Hydroxyproline", "3", "18100"], ["573", "mg", "", "Vitamin E, added", "2", "7920"], ["578", "mcg", "", "Vitamin B-12, added", "2", "7340"], ["601", "mg", "CHOLE", "Cholesterol", "0", "15700"], ["605", "g", "FATRN", "Fatty acids, total trans", "3", "15400"], ["606", "g", "FASAT", "Fatty acids, total saturated", "3", "9700"], ["607", "g", "F4D0", "4:0", "3", "9800"], ["608", "g", "F6D0", "6:0", "3", "9900"], ["609", "g", "F8D0", "8:0", "3", "10000"], ["610", "g", "F10D0", "10:0", "3", "10100"], ["611", "g", "F12D0", "12:0", "3", "10300"], ["612", "g", "F14D0", "14:0", "3", "10500"], ["613", "g", "F16D0", "16:0", "3", "10700"], ["614", "g", "F18D0", "18:0", "3", "10900"], ["615", "g", "F20D0", "20:0", "3", "11100"], ["617", "g", "F18D1", "18:1 undifferentiated", "3", "12100"], ["618", "g", "F18D2", "18:2 undifferentiated", "3", "13100"], ["619", "g", "F18D3", "18:3 undifferentiated", "3", "13900"], ["620", "g", "F20D4", "20:4 undifferentiated", "3", "14700"], ["621", "g", "F22D6", "22:6 n-3 (DHA)", "3", "15300"], ["624", "g", "F22D0", "22:0", "3", "11200"], ["625", "g", "F14D1", "14:1", "3", "11500"], ["626", "g", "F16D1", "16:1 undifferentiated", "3", "11700"], ["627", "g", "F18D4", "18:4", "3", "14250"], ["628", "g", "F20D1", "20:1", "3", "12400"], ["629", "g", "F20D5", "20:5 n-3 (EPA)", "3", "15000"], ["630", "g", "F22D1", "22:1 undifferentiated", "3", "12500"], ["631", "g", "F22D5", "22:5 n-3 (DPA)", "3", "15200"], ["636", "mg", "PHYSTR", "Phytosterols", "0", "15800"], ["638", "mg", "STID7", "Stigmasterol", "0", "15900"], ["639", "mg", "CAMD5", "Campesterol", "0", "16000"], ["641", "mg", "SITSTR", "Beta-sitosterol", "0", "16200"], ["645", "g", "FAMS", "Fatty acids, total monounsaturated", "3", "11400"], ["646", "g", "FAPU", "Fatty acids, total polyunsaturated", "3", "12900"], ["652", "g", "F15D0", "15:0", "3", "10600"], ["653", "g", "F17D0", "17:0", "3", "10800"], ["654", "g", "F24D0", "24:0", "3", "11300"], ["662", "g", "F16D1T", "16:1 t", "3", "11900"], ["663", "g", "F18D1T", "18:1 t", "3", "12300"], ["664", "g", "", "22:1 t", "3", "12700"], ["665", "g", "", "18:2 t not further defined", "3", "13800"], ["666", "g", "", "18:2 i", "3", "13700"], ["669", "g", "F18D2TT", "18:2 t,t", "3", "13600"], ["670", "g", "F18D2CLA", "18:2 CLAs", "3", "13300"], ["671", "g", "F24D1C", "24:1 c", "3", "12800"], ["672", "g", "F20D2CN6", "20:2 n-6 c,c", "3", "14300"], ["673", "g", "F16D1C", "16:1 c", "3", "11800"], ["674", "g", "F18D1C", "18:1 c", "3", "12200"], ["675", "g", "F18D2CN6", "18:2 n-6 c,c", "3", "13200"], ["676", "g", "", "22:1 c", "3", "12600"], ["685", "g", "F18D3CN6", "18:3 n-6 c,c,c", "3", "14100"], ["687", "g", "F17D1", "17:1", "3", "12000"], ["689", "g", "F20D3", "20:3 undifferentiated", "3", "14400"], ["693", "g", "FATRNM", "Fatty acids, total trans-monoenoic", "3", "15500"], ["695", "g", "FATRNP", "Fatty acids, total trans-polyenoic", "3", "15600"], ["696", "g", "F13D0", "13:0", "3", "10400"], ["697", "g", "F15D1", "15:1", "3", "11600"], ["851", "g", "F18D3CN3", "18:3 n-3 c,c,c (ALA)", "3", "14000"], ["852", "g", "F20D3N3", "20:3 n-3", "3", "14500"], ["853", "g", "F20D3N6", "20:3 n-6", "3", "14600"], ["855", "g", "F20D4N6", "20:4 n-6", "3", "14900"], ["856", "g", "", "18:3i", "3", "14200"], ["857", "g", "F21D5", "21:5", "3", "15100"], ["858", "g", "F22D4", "22:4", "3", "15160"], ["859", "g", "F18D1TN7", "18:1-11t (18:1t n-7)", "3", "12310"]];
+var nutrients = {
+  "214": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Maltose", 
+    "tagname": "MALS"
+  }, 
+  "212": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Fructose", 
+    "tagname": "FRUS"
+  }, 
+  "213": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Lactose", 
+    "tagname": "LACS"
+  }, 
+  "210": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Sucrose", 
+    "tagname": "SUCS"
+  }, 
+  "211": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Glucose (dextrose)", 
+    "tagname": "GLUS"
+  }, 
+  "666": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:2 i", 
+    "tagname": ""
+  }, 
+  "665": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:2 t not further defined", 
+    "tagname": ""
+  }, 
+  "664": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "22:1 t", 
+    "tagname": ""
+  }, 
+  "663": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:1 t", 
+    "tagname": "F18D1T"
+  }, 
+  "662": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "16:1 t", 
+    "tagname": "F16D1T"
+  }, 
+  "620": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "20:4 undifferentiated", 
+    "tagname": "F20D4"
+  }, 
+  "627": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:4", 
+    "tagname": "F18D4"
+  }, 
+  "626": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "16:1 undifferentiated", 
+    "tagname": "F16D1"
+  }, 
+  "693": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Fatty acids, total trans-monoenoic", 
+    "tagname": "FATRNM"
+  }, 
+  "696": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "13:0", 
+    "tagname": "F13D0"
+  }, 
+  "669": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:2 t,t", 
+    "tagname": "F18D2TT"
+  }, 
+  "695": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Fatty acids, total trans-polyenoic", 
+    "tagname": "FATRNP"
+  }, 
+  "406": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Niacin", 
+    "tagname": "NIA"
+  }, 
+  "405": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Riboflavin", 
+    "tagname": "RIBF"
+  }, 
+  "404": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Thiamin", 
+    "tagname": "THIA"
+  }, 
+  "341": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Tocopherol, beta", 
+    "tagname": "TOCPHB"
+  }, 
+  "342": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Tocopherol, gamma", 
+    "tagname": "TOCPHG"
+  }, 
+  "343": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Tocopherol, delta", 
+    "tagname": "TOCPHD"
+  }, 
+  "629": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "20:5 n-3 (EPA)", 
+    "tagname": "F20D5"
+  }, 
+  "287": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Galactose", 
+    "tagname": "GALS"
+  }, 
+  "674": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:1 c", 
+    "tagname": "F18D1C"
+  }, 
+  "675": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:2 n-6 c,c", 
+    "tagname": "F18D2CN6"
+  }, 
+  "676": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "22:1 c", 
+    "tagname": ""
+  }, 
+  "670": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:2 CLAs", 
+    "tagname": "F18D2CLA"
+  }, 
+  "671": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "24:1 c", 
+    "tagname": "F24D1C"
+  }, 
+  "672": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "20:2 n-6 c,c", 
+    "tagname": "F20D2CN6"
+  }, 
+  "673": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "16:1 c", 
+    "tagname": "F16D1C"
+  }, 
+  "263": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Theobromine", 
+    "tagname": "THEBRN"
+  }, 
+  "262": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Caffeine", 
+    "tagname": "CAFFN"
+  }, 
+  "269": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Sugars, total", 
+    "tagname": "SUGAR"
+  }, 
+  "268": {
+    "benefit": [], 
+    "unit": "kJ", 
+    "name": "Energy", 
+    "tagname": "ENERC_KJ"
+  }, 
+  "415": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Vitamin B-6", 
+    "tagname": "VITB6A"
+  }, 
+  "417": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Folate, total", 
+    "tagname": "FOL"
+  }, 
+  "410": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Pantothenic acid", 
+    "tagname": "PANTAC"
+  }, 
+  "418": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Vitamin B-12", 
+    "tagname": "VITB12"
+  }, 
+  "291": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Fiber, total dietary", 
+    "tagname": "FIBTG"
+  }, 
+  "319": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Retinol", 
+    "tagname": "RETOL"
+  }, 
+  "318": {
+    "benefit": [], 
+    "unit": "IU", 
+    "name": "Vitamin A, IU", 
+    "tagname": "VITA_IU"
+  }, 
+  "313": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Fluoride, F", 
+    "tagname": "FLD"
+  }, 
+  "312": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Copper, Cu", 
+    "tagname": "CU"
+  }, 
+  "317": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Selenium, Se", 
+    "tagname": "SE"
+  }, 
+  "618": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:2 undifferentiated", 
+    "tagname": "F18D2"
+  }, 
+  "315": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Manganese, Mn", 
+    "tagname": "MN"
+  }, 
+  "429": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Dihydrophylloquinone", 
+    "tagname": "VITK1D"
+  }, 
+  "428": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Menaquinone-4", 
+    "tagname": "MK4"
+  }, 
+  "521": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Hydroxyproline", 
+    "tagname": "HYP"
+  }, 
+  "613": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "16:0", 
+    "tagname": "F16D0"
+  }, 
+  "421": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Choline, total", 
+    "tagname": "CHOLN"
+  }, 
+  "309": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Zinc, Zn", 
+    "tagname": "ZN"
+  }, 
+  "301": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Calcium, Ca", 
+    "tagname": "CA"
+  }, 
+  "303": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Iron, Fe", 
+    "tagname": "FE"
+  }, 
+  "304": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Magnesium, Mg", 
+    "tagname": "MG"
+  }, 
+  "305": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Phosphorus, P", 
+    "tagname": "P"
+  }, 
+  "306": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Potassium, K", 
+    "tagname": "K"
+  }, 
+  "307": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Sodium, Na", 
+    "tagname": "NA"
+  }, 
+  "697": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "15:1", 
+    "tagname": "F15D1"
+  }, 
+  "641": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Beta-sitosterol", 
+    "tagname": "SITSTR"
+  }, 
+  "518": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Serine", 
+    "tagname": "SER_G"
+  }, 
+  "645": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Fatty acids, total monounsaturated", 
+    "tagname": "FAMS"
+  }, 
+  "646": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Fatty acids, total polyunsaturated", 
+    "tagname": "FAPU"
+  }, 
+  "511": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Arginine", 
+    "tagname": "ARG_G"
+  }, 
+  "510": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Valine", 
+    "tagname": "VAL_G"
+  }, 
+  "513": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Alanine", 
+    "tagname": "ALA_G"
+  }, 
+  "512": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Histidine", 
+    "tagname": "HISTN_G"
+  }, 
+  "515": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Glutamic acid", 
+    "tagname": "GLU_G"
+  }, 
+  "514": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Aspartic acid", 
+    "tagname": "ASP_G"
+  }, 
+  "517": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Proline", 
+    "tagname": "PRO_G"
+  }, 
+  "516": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Glycine", 
+    "tagname": "GLY_G"
+  }, 
+  "621": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "22:6 n-3 (DHA)", 
+    "tagname": "F22D6"
+  }, 
+  "578": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Vitamin B-12, added", 
+    "tagname": ""
+  }, 
+  "612": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "14:0", 
+    "tagname": "F14D0"
+  }, 
+  "338": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Lutein + zeaxanthin", 
+    "tagname": "LUT+ZEA"
+  }, 
+  "625": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "14:1", 
+    "tagname": "F14D1"
+  }, 
+  "624": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "22:0", 
+    "tagname": "F22D0"
+  }, 
+  "573": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Vitamin E, added", 
+    "tagname": ""
+  }, 
+  "334": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Cryptoxanthin, beta", 
+    "tagname": "CRYPX"
+  }, 
+  "337": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Lycopene", 
+    "tagname": "LYCPN"
+  }, 
+  "628": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "20:1", 
+    "tagname": "F20D1"
+  }, 
+  "454": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Betaine", 
+    "tagname": "BETN"
+  }, 
+  "257": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Adjusted Protein", 
+    "tagname": ""
+  }, 
+  "255": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Water", 
+    "tagname": "WATER"
+  }, 
+  "855": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "20:4 n-6", 
+    "tagname": "F20D4N6"
+  }, 
+  "856": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:3i", 
+    "tagname": ""
+  }, 
+  "857": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "21:5", 
+    "tagname": "F21D5"
+  }, 
+  "851": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:3 n-3 c,c,c (ALA)", 
+    "tagname": "F18D3CN3"
+  }, 
+  "852": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "20:3 n-3", 
+    "tagname": "F20D3N3"
+  }, 
+  "853": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "20:3 n-6", 
+    "tagname": "F20D3N6"
+  }, 
+  "858": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "22:4", 
+    "tagname": "F22D4"
+  }, 
+  "859": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:1-11t (18:1t n-7)", 
+    "tagname": "F18D1TN7"
+  }, 
+  "654": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "24:0", 
+    "tagname": "F24D0"
+  }, 
+  "652": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "15:0", 
+    "tagname": "F15D0"
+  }, 
+  "653": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "17:0", 
+    "tagname": "F17D0"
+  }, 
+  "508": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Phenylalanine", 
+    "tagname": "PHE_G"
+  }, 
+  "509": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Tyrosine", 
+    "tagname": "TYR_G"
+  }, 
+  "506": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Methionine", 
+    "tagname": "MET_G"
+  }, 
+  "507": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Cystine", 
+    "tagname": "CYS_G"
+  }, 
+  "504": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Leucine", 
+    "tagname": "LEU_G"
+  }, 
+  "505": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Lysine", 
+    "tagname": "LYS_G"
+  }, 
+  "502": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Threonine", 
+    "tagname": "THR_G"
+  }, 
+  "503": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Isoleucine", 
+    "tagname": "ILE_G"
+  }, 
+  "501": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Tryptophan", 
+    "tagname": "TRP_G"
+  }, 
+  "630": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "22:1 undifferentiated", 
+    "tagname": "F22D1"
+  }, 
+  "631": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "22:5 n-3 (DPA)", 
+    "tagname": "F22D5"
+  }, 
+  "401": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Vitamin C, total ascorbic acid", 
+    "tagname": "VITC"
+  }, 
+  "636": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Phytosterols", 
+    "tagname": "PHYSTR"
+  }, 
+  "638": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Stigmasterol", 
+    "tagname": "STID7"
+  }, 
+  "639": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Campesterol", 
+    "tagname": "CAMD5"
+  }, 
+  "221": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Alcohol, ethyl", 
+    "tagname": "ALC"
+  }, 
+  "605": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Fatty acids, total trans", 
+    "tagname": "FATRN"
+  }, 
+  "607": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "4:0", 
+    "tagname": "F4D0"
+  }, 
+  "606": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Fatty acids, total saturated", 
+    "tagname": "FASAT"
+  }, 
+  "601": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Cholesterol", 
+    "tagname": "CHOLE"
+  }, 
+  "609": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "8:0", 
+    "tagname": "F8D0"
+  }, 
+  "608": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "6:0", 
+    "tagname": "F6D0"
+  }, 
+  "322": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Carotene, alpha", 
+    "tagname": "CARTA"
+  }, 
+  "323": {
+    "benefit": [], 
+    "unit": "mg", 
+    "name": "Vitamin E (alpha-tocopherol)", 
+    "tagname": "TOCPHA"
+  }, 
+  "320": {
+    "benefit": [], 
+    "unit": "mcg_RAE", 
+    "name": "Vitamin A, RAE", 
+    "tagname": "VITA_RAE"
+  }, 
+  "321": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Carotene, beta", 
+    "tagname": "CARTB"
+  }, 
+  "326": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Vitamin D3 (cholecalciferol)", 
+    "tagname": "CHOCAL"
+  }, 
+  "324": {
+    "benefit": [], 
+    "unit": "IU", 
+    "name": "Vitamin D", 
+    "tagname": "VITD"
+  }, 
+  "325": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Vitamin D2 (ergocalciferol)", 
+    "tagname": "ERGCAL"
+  }, 
+  "328": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Vitamin D (D2 + D3)", 
+    "tagname": "VITD"
+  }, 
+  "203": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Protein", 
+    "tagname": "PROCNT"
+  }, 
+  "619": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:3 undifferentiated", 
+    "tagname": "F18D3"
+  }, 
+  "205": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Carbohydrate, by difference", 
+    "tagname": "CHOCDF"
+  }, 
+  "204": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Total lipid (fat)", 
+    "tagname": "FAT"
+  }, 
+  "207": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Ash", 
+    "tagname": "ASH"
+  }, 
+  "209": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "Starch", 
+    "tagname": "STARCH"
+  }, 
+  "208": {
+    "benefit": [], 
+    "unit": "kcal", 
+    "name": "Energy", 
+    "tagname": "ENERC_KCAL"
+  }, 
+  "610": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "10:0", 
+    "tagname": "F10D0"
+  }, 
+  "611": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "12:0", 
+    "tagname": "F12D0"
+  }, 
+  "617": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:1 undifferentiated", 
+    "tagname": "F18D1"
+  }, 
+  "614": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:0", 
+    "tagname": "F18D0"
+  }, 
+  "615": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "20:0", 
+    "tagname": "F20D0"
+  }, 
+  "435": {
+    "benefit": [], 
+    "unit": "mcg_DFE", 
+    "name": "Folate, DFE", 
+    "tagname": "FOLDFE"
+  }, 
+  "432": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Folate, food", 
+    "tagname": "FOLFD"
+  }, 
+  "689": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "20:3 undifferentiated", 
+    "tagname": "F20D3"
+  }, 
+  "430": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Vitamin K (phylloquinone)", 
+    "tagname": "VITK1"
+  }, 
+  "685": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "18:3 n-6 c,c,c", 
+    "tagname": "F18D3CN6"
+  }, 
+  "687": {
+    "benefit": [], 
+    "unit": "g", 
+    "name": "17:1", 
+    "tagname": "F17D1"
+  }, 
+  "431": {
+    "benefit": [], 
+    "unit": "mcg", 
+    "name": "Folic acid", 
+    "tagname": "FOLAC"
+  }
+};
