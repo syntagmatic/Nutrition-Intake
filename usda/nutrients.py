@@ -15,6 +15,6 @@ for k,v in sources.iteritems():
     data = []
     for i in source:
         data.append(i)
-    f = open('processed/' + k + '.js', 'w' )
+    f = open('json/' + k + '.js', 'w' )
     f.write('var ' + k + " = " + json.dumps(data) + ";");
     f.close()
