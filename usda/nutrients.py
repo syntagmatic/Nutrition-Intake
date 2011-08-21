@@ -41,11 +41,12 @@ for food in data['food']:
     }
 
 for item in data['data']:
-    amount = round(float(item[2]), 3)
+    amount = float(item[2])
     if amount > 0.001:
         nut = {
             'id': item[1],
             'amount': amount,
+			'aaa':111,
         }
         foods[item[0]]['nutrients'].append(nut)
 
