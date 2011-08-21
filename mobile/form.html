@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="css/style.css?v=1">
   <script src="js/libs/underscore.js"></script>
   <script src="js/libs/jquery.min.js"></script>
+  <script src="js/data/recommendations.js"></script>
+  <script src="js/data/nutrients.js"></script>
   <script src="js/form.js"></script>
 </head>
 
@@ -16,11 +18,11 @@
     <h1>Recommended Daily Allowances</h1>
   </header>
   <div id="main" role="main">
-    <form id="rda" name="rda">
+    <form id="rdi" name="rdi">
       <script type="text/template" class="template">
         <div class="field">
-          <%= key %>: 
-          <input type="text" name="<%= key %>" value="<%= value %>"></input>
+          <%= name %>: 
+          <input type="text" name="<%= key %>" value="<%= value %>" style="width:48px;"></input> <%= unit %>
         </div>
       </script>
     </form>

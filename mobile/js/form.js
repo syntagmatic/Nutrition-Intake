@@ -1,17 +1,14 @@
 $(function() {
-  var rda = {
-    'Cholesterol' : 20,
-    'Fat' : 50,
-    'Sugar' : 120,
-  };
 
-  var rda_template = _.template($('#rda .template').html());
+  var rdi_template = _.template($('#rdi .template').html());
 
-  var fields_html = _(rda).reduce(function(html, v, k) {
-    return html += rda_template({
+  var fields_html = _(recommendations).reduce(function(html, v, k) {
+    return html += rdi_template({
+      name: nutrients[k].name,
       key: k,
-      value: v
+      value: v['rdi'],
+      unit: v['unit']
     });
   }, "");
-  $('#rda').append(fields_html);
+  $('#rdi').append(fields_html);
 });

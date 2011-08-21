@@ -1,7 +1,4 @@
-﻿/**
- * HTML5 ✰ Boilerplate
- */
-
+﻿/* BEGIN RESET */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
@@ -91,19 +88,10 @@ textarea.contenteditable {-webkit-appearance: none;}
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 
+/* END RESET */
 
-/* Primary Styles for mobile
-   Author:
-*/
-
-
-/* CSS MQ */
-
-@media only screen and (min-width: 800px) {
-}/*/mediaquery*/
-
-@media
-only screen and (-webkit-min-device-pixel-ratio: 1.5),
-only screen and (-o-min-device-pixel-ratio: 3/2),
-only screen and (min-device-pixel-ratio: 1.5) {
+bar {
+  height: 15px;
+  display: inline-block;
+  background: #1a2;
 }
