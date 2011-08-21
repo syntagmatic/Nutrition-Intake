@@ -23,17 +23,17 @@ for k,v in sources.iteritems():
         data[k].append(i)
 
 # Nutrients
-"""
 for nut in data['nutrients']:
     nutrients[nut[0]] = {
         'name': nut[3],
         'tagname': nut[2],
         'unit': nut[1],
-        'benefit':[],
+        'dos':[],
+        'donts':[],
     }
-"""
 
 # Food
+"""
 for food in data['food']:
     foods[food[0]] = {
         'name': food[2],
@@ -49,13 +49,13 @@ for item in data['data']:
             'amount': amount,
         }
         foods[item[0]]['nutrients'].append(nut)
-
+"""
 # Food Groups
 """
 for food in data['food_groups']:
     foodgroups[food[0]] = food[1]
 """
 
-f = open('json/foods.js', 'w' )
-f.write('var foods = ' + json.dumps(foods) + ';')
+f = open('json/nutrients.js', 'w' )
+f.write('var nutrients = ' + json.dumps(nutrients, indent=2) + ';')
 f.close()
