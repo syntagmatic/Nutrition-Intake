@@ -56,7 +56,7 @@ var recommendations = {
   "304": {
     "dos": [58,19,18,41,56,59,30,60], 
     "donts": [],
-	  "rdi": 2,
+	  "rdi": 400,
     "unit": "mg"
   }, 
   "306": {
