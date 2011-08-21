@@ -4,27 +4,37 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="css/style.css?v=1">
-  <script src="js/script.js"></script>
   <script src="js/libs/underscore.js"></script>
   <script src="js/libs/jquery.min.js"></script>
-  <script src="js/data/data.js"></script>
   <script src="js/data/foods.js"></script>
   <script src="js/data/nutrients.js"></script>
+  <script src="js/script.js"></script>
 </head>
 
 <body>
 
-  <div id="container">
-    <header>
+<div id="container">
+  <header>
+    <h1>Nutrition Networks</h1>
+  </header>
+  <div id="main" role="main">
+    <h3>Nutrients</h3>
+    <ul id="nutrients">
+      <script type="text/template" class="template">
+        <li><%= nutrient %></li>
+      </script>
+    </ul>
+    <h3>Foods</h3>
+    <ul id="foods">
+      <script type="text/template" class="template">
+        <li><%= food %></li>
+      </script>
+    </ul>
+  </div>
+  
+  <footer>
 
-    </header>
-    <div id="main" role="main">
-      
-    </div>
-    
-    <footer>
-
-    </footer>
-  </div> <!--! end of #container -->
+  </footer>
+</div> <!--! end of #container -->
 </body>
 </html>
