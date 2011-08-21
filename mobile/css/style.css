@@ -166,3 +166,7 @@ input:focus {
 	color:#fff;
 	margin-top:10px;
 }
+p {
+	width:300px;
+	padding:10px 0 10px;
+}
