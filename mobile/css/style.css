@@ -147,4 +147,22 @@ input:focus {
 
 .field {
   padding: 4px;
+	float:left;
+	width:290px;
+}
+
+#rdi {
+	width:600px;
+	float:left;
+	clear:left;
+}
+
+.button{
+	border:none;
+	float:left;
+	clear:left;
+	padding:10px;
+	background:#1a2;
+	color:#fff;
+	margin-top:10px;
 }
