@@ -9,9 +9,17 @@
   <script src="js/data/foods.js"></script>
   <script src="js/data/recommendations.js"></script>
   <script src="js/data/nutrients.js"></script>
-  <script src="http://raphaeljs.com/raphael.js"></script>
+  <script src="js/libs/raphael.js"></script>
   <script src="js/rdi.js"></script>
   <style>
+    #foods {
+      background:transparent;
+    }
+    #main {
+      position:relative;
+      z-index:500;
+      background:transparent;
+    }
     .bar-label {
       display:inline-block;
       text-align:right;
@@ -31,6 +39,10 @@
       margin:0;
       cursor:pointer;
     }
+    header h1 {
+      font-size:20px;
+      z-index:500;
+    }
     h2 {
       position:absolute;
       font-size:26px;
@@ -43,6 +55,15 @@
       display:block;
       clear:both;
     }
+    #fullLine {
+      position:absolute;
+      top:0;
+      left:332px;
+      width:1px;
+      height:800px;
+      border-left:1px dashed #d4d4d4;
+      z-index:1;
+    }
   </style>
 </head>
 
@@ -50,7 +71,7 @@
 
 <div id="container">
   <header>
-    <h1>Foods</h1>
+    <h1>What did I eat today?</h1>
     <h2></h2>
   </header>
   <div id="main" role="main">
@@ -62,7 +83,7 @@
       </span>
     </div>
   </div>
-  
+  <div id="fullLine"></div>
   <footer>
 
   </footer>

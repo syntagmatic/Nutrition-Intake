@@ -103,6 +103,7 @@ h3 {
 
 #container {
   padding:18px;
+	width:700px;
 }
 
 bar {
@@ -152,7 +153,7 @@ input:focus {
 }
 
 #rdi {
-	width:600px;
+/*	width:600px;*/
 	float:left;
 	clear:left;
 }
@@ -167,6 +168,5 @@ input:focus {
 	margin-top:10px;
 }
 p {
-	width:300px;
 	padding:10px 0 10px;
 }
