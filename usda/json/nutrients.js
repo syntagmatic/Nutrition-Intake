@@ -1,4 +1,4 @@
-var data = {
+var nutrients = {
   "214": {
     "unit": "g", 
     "name": "Maltose", 

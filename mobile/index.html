@@ -7,8 +7,17 @@
   <script src="js/libs/underscore.js"></script>
   <script src="js/libs/jquery.min.js"></script>
   <script src="js/data/foods.js"></script>
-  <script src="js/data/nutrients.js"></script>
+  <script src="../usda/json/nutrients.js"></script>
+  <script src="../usda/json/recommendations.js"></script>
   <script src="js/script.js"></script>
+  <style>
+  .bar {
+    height:15px;
+    background:#090;
+    display:inline-block;
+    color:#666;
+  }
+  </style>
 </head>
 
 <body>
@@ -30,10 +39,11 @@
         <li>
           <strong><%= food %></strong>
           <ul>
-            <% _(nuts).each(function(nut) { %>
+            <% _(nuts).each(function(nut) { 
+                if (recommendations[nut.id]) {%>
               <li><% print(nutrients[nut.id].name || 'unkown'); %>:
-                  <span class="bar" style="width:<% print(Math.floor(nut.amount)/3); %>px;height:15px;background:#090;display:inline-block;color:#999;"><%=nut.amount%></span></li>
-            <% }); %>
+                  <span class="bar" style="width:<% print(Math.floor(nut.amount)/3); %>px;"><%=nut.amount%></span></li>
+            <%} }); %>
           </ul>
         </li>
       </script>
