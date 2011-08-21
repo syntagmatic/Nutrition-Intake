@@ -14,7 +14,7 @@ $(function() {
       nutrient: nutrients[k].name
     });
   });
-  $('#nutrients').append(rec_html);
+  //$('#nutrients').append(rec_html);
 
   var food_subset = _(foods).keys().slice(0, 21);
   var food_template = _.template($('#foods .template').html());
