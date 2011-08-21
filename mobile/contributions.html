@@ -17,18 +17,20 @@
 
 <div id="container">
   <div id="circlepack">
-   <script type="text/javascript+protovis" charset="utf-8">
+   <script type="text/javascript" charset="utf-8">
    // find all good nutrients for every condition
    // for every condition
    // go over every reco
    //    check if condition exists in dos
-   //       add nutrient for that condition
+   //       append nutrient for that condition
    var goodnuts = {}
    _(conditions).each(function(co,id){
+      goodnuts[id] = []
       _(recommendations).each(function(no,nutrient){
          _(no.dos).each(function(cid){
             if(id==cid){
-               console.log(id,nutrient)
+               goodnuts[id].push(nutrient)
+               // console.log(id,nutrient)
             }
          });
       });
@@ -38,6 +40,8 @@
    <script type="text/javascript+protovis" charset="utf-8">
    // input conditionid
    // output nutirients that contribute to that condition
+   // for each food item
+   // 
    </script>
   </div>
 </div> <!--! end of #container -->
