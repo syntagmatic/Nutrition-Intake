@@ -41,11 +41,13 @@ for food in data['food']:
     }
 
 for item in data['data']:
-    nut = {
-        'id': item[1],
-        'amount': item[2],
-    }
-    foods[item[0]]['nutrients'].append(nut)
+    amount = float(item[2])
+    if amount > 0.001:
+        nut = {
+            'id': item[1],
+            'amount': amount,
+        }
+        foods[item[0]]['nutrients'].append(nut)
 
 f = open('json/data.js', 'w' )
 f.write('var data = ' + json.dumps(foods, indent=2) + ';')
