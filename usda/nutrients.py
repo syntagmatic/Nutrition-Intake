@@ -41,7 +41,7 @@ for food in data['food']:
     }
 
 for item in data['data']:
-    amount = float(item[2])
+    amount = round(float(item[2]), 3)
     if amount > 0.001:
         nut = {
             'id': item[1],
