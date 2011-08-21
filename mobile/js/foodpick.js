@@ -26,13 +26,6 @@ $(function() {
   });
   $('#foodpick').html(foodpick_html);
 
-  $('#foodpick').change(function() {
-    var picked_food = [$(this).val()];
-    render(picked_food);
-  });
-
-  $('#foodpick').val('09038').change();
-
   // Update RDI values if form submission
   var rdi_updates = getUrlVars();
   if (_(rdi_updates).size() > 1) {
@@ -40,6 +33,13 @@ $(function() {
        recommendations[i]['rdi'] = rdi_updates[i];
     }
   }
+
+  $('#foodpick').change(function() {
+    var picked_food = [$(this).val()];
+    render(picked_food);
+  });
+
+  $('#foodpick').val('09038').change();
 
   function render(food_keys) {
     var foods_html = "";
