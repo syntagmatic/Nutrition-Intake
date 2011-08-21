@@ -14,6 +14,7 @@ sources = {
 data = {}
 nutrients = {}
 foods = {}
+foodgroups = {}
 
 for k,v in sources.iteritems():
     source = csv.reader(open(v, 'rb'), delimiter='^', quotechar='~')
@@ -46,10 +47,15 @@ for item in data['data']:
         nut = {
             'id': item[1],
             'amount': amount,
-			'aaa':111,
         }
         foods[item[0]]['nutrients'].append(nut)
 
-f = open('json/data.js', 'w' )
-f.write('var data = ' + json.dumps(foods, indent=2) + ';')
+# Food Groups
+"""
+for food in data['food_groups']:
+    foodgroups[food[0]] = food[1]
+"""
+
+f = open('json/foods.js', 'w' )
+f.write('var foods = ' + json.dumps(foods) + ';')
 f.close()
