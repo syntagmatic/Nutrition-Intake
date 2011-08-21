@@ -28,8 +28,6 @@ for nut in data['nutrients']:
         'name': nut[3],
         'tagname': nut[2],
         'unit': nut[1],
-        'dos':[],
-        'donts':[],
     }
 
 # Food
@@ -57,5 +55,5 @@ for food in data['food_groups']:
 """
 
 f = open('json/nutrients.js', 'w' )
-f.write('var nutrients = ' + json.dumps(nutrients, indent=2) + ';')
+f.write('var data = ' + json.dumps(nutrients, indent=2) + ';')
 f.close()
