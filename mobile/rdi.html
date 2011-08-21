@@ -9,24 +9,34 @@
   <script src="js/data/foods.js"></script>
   <script src="js/data/recommendations.js"></script>
   <script src="js/data/nutrients.js"></script>
+  <script src="http://raphaeljs.com/raphael.js"></script>
   <script src="js/rdi.js"></script>
   <style>
     .bar-label {
       display:inline-block;
+      text-align:right;
     }
     .row {
       display:inline-block;
       border:1px solid #ccc;
       border-left:0;
       height:20px;
+      background:#fff;
     }
     bar {
       border-left:1px solid #ccc;
-      background:transparent;
+      background-color:transparent;
       height:20px;
       position:static;
       margin:0;
       cursor:pointer;
+    }
+    h2 {
+      position:absolute;
+      font-size:26px;
+      font-weight:normal;
+      right:0;
+      color:#888;
     }
     .clear {
       display:block;
@@ -40,6 +50,7 @@
 <div id="container">
   <header>
     <h1>Foods</h1>
+    <h2></h2>
   </header>
   <div id="main" role="main">
     <select id="foodpick">
@@ -52,7 +63,7 @@
         <span class="bar-label"><%= key %></span>
       </script>
         <script type="text/template" class="inner-template">
-          <bar style="width:<%= width %>px" title="<%= key %>: <%= value %>"></bar>
+          <bar style="width:<%= width %>px" title="<%= key %>: <%= value %>" class="<%= classN %>"></bar>
         </script>
       </span>
     </div>
