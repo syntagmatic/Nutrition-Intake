@@ -10,6 +10,29 @@
   <script src="js/data/recommendations.js"></script>
   <script src="js/data/nutrients.js"></script>
   <script src="js/rdi.js"></script>
+  <style>
+    .bar-label {
+      display:inline-block;
+    }
+    .row {
+      display:inline-block;
+      border:1px solid #ccc;
+      border-left:0;
+      height:20px;
+    }
+    bar {
+      border-left:1px solid #ccc;
+      background:transparent;
+      height:20px;
+      position:static;
+      margin:0;
+      cursor:pointer;
+    }
+    .clear {
+      display:block;
+      clear:both;
+    }
+  </style>
 </head>
 
 <body>
@@ -21,13 +44,12 @@
   <div id="main" role="main">
     <div id="foods">
       <script type="text/template" class="template">
-        <h3><%= key %></h3>
+        <span class="bar-label"><%= key %></span>
       </script>
-      <script type="text/template" class="inner-template">
-      <span class="bar-label">
-        <%= key %>: <span class="percent"><%= value %>%</span><bar style="width:<%= width %>px"></bar>
+        <script type="text/template" class="inner-template">
+          <bar style="width:<%= width %>px" title="<%= key %>: <%= value %>"></bar>
+        </script>
       </span>
-      </script>
     </div>
   </div>
   
