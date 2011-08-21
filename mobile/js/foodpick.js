@@ -4,7 +4,17 @@ $(function() {
   var foodpick_template = _.template($('#foodpick .template').html());
   var nutrient_template = _.template($('#foods .inner-template').html());
 
-  var food_keys = _(foods).keys().sort();
+  var food_names = _(foods).map(function(v,k) {
+    return {
+      key: k,
+      name: v.name
+    };
+  });
+
+  var food_keys = _(food_names).chain()
+                               .sortBy(function(i) { return i.name })
+                               .pluck('key')
+                               .value();
 
   // Dropdown
   var foodpick_html = "";
