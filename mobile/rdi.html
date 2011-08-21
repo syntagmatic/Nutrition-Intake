@@ -37,6 +37,7 @@
       font-weight:normal;
       right:0;
       color:#888;
+      padding-right:20px;
     }
     .clear {
       display:block;
@@ -53,18 +54,11 @@
     <h2></h2>
   </header>
   <div id="main" role="main">
-    <select id="foodpick">
-      <script type="text/template" class="template">
-        <option value="<%= key %>"><%= value %></option>
-      </script>
-    </select>
     <div id="foods">
       <script type="text/template" class="template">
         <span class="bar-label"><%= key %></span>
       </script>
-        <script type="text/template" class="inner-template">
-          <bar style="width:<%= width %>px" title="<%= key %>: <%= value %>" class="<%= classN %>"></bar>
-        </script>
+        <script type="text/template" class="inner-template"><bar style="width:<%= width %>px" title="<%= key %>: <%= value %>%" class="<%= classN %>"></bar></script>
       </span>
     </div>
   </div>
