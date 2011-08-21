@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="css/style.css?v=1">
   <script src="js/libs/underscore.js"></script>
   <script src="js/libs/jquery.min.js"></script>
-  <script src="js/data/foods.js"></script>
-  <script src="js/foodlist.js"></script>
+  <script src="js/data/conditions.js"></script>
+  <script src="js/conditions.js"></script>
 </head>
 
 <body>
@@ -17,11 +17,11 @@
     <h1>Foods</h1>
   </header>
   <div id="main" role="main">
-    <div id="foods">
+    <select name="conditions" id="conditions">
       <script type="text/template" class="template">
-        <%= key %><br/>
+        <option value="<%= key %>"><%= value %></option>
       </script>
-    </div>
+    </select>
   </div>
   
   <footer>
