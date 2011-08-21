@@ -51,6 +51,8 @@ $(function() {
         if (nut.id in recommendations) {
           foods_html += nutrient_template({
             key: nutrients[nut.id].name,
+            rdi: recommendations[nut.id]['rdi'],
+            unit: recommendations[nut.id]['unit'],
             value: rdi(nut),
             width: Math.round(rdi(nut))
           });
