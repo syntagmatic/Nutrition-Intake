@@ -95,3 +95,22 @@ bar {
   display: inline-block;
   background: #1a2;
 }
+
+input {
+  font-weight: bold;
+  border: 2px solid #e4e4e4;
+  padding: 1px 3px;
+  text-align: right;
+}
+input:focus {
+  border: 2px solid #2b2;
+  outline: none;
+}
+
+.digit {
+  width: 40px;
+}
+
+.field {
+  padding: 4px;
+}
