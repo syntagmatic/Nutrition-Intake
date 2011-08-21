@@ -89,10 +89,20 @@ textarea.contenteditable {-webkit-appearance: none;}
 .clearfix { zoom: 1; }
 
 /* END RESET */
-
+* {
+	background-color: #eee;
+}
+header h1{
+	font-size:40px;
+	margin-bottom:10px;
+}
 h3 {
   font-size: 16px;
   margin: 16px 0 8px;
+}
+
+#container {
+  padding:18px;
 }
 
 bar {
@@ -101,12 +111,12 @@ bar {
   display: inline-block;
   background: #1a2;
   position: absolute;
-  left: 260px;
+  left: 290px;
 }
 
 .bar-label {
   width: 210px;
-  text-align: right;
+  text-align: left;
   display: block;
 }
 
@@ -115,6 +125,10 @@ input {
   border: 2px solid #e4e4e4;
   padding: 1px 3px;
   text-align: right;
+}
+
+select {
+	width:276px;
 }
 input:focus {
   border: 2px solid #2b2;
@@ -128,9 +142,31 @@ input:focus {
 .percent {
   color: #777;
   position: absolute;
-  left: 215px;
+  left: 240px;
 }
 
 .field {
   padding: 4px;
+	float:left;
+	width:290px;
+}
+
+#rdi {
+	width:600px;
+	float:left;
+	clear:left;
+}
+
+.button{
+	border:none;
+	float:left;
+	clear:left;
+	padding:10px;
+	background:#1a2;
+	color:#fff;
+	margin-top:10px;
+}
+p {
+	width:300px;
+	padding:10px 0 10px;
 }

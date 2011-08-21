@@ -16,9 +16,10 @@
 
 <div id="container">
   <header>
-    <h1>Foods</h1>
+    <h1>Nutrient Intake</h1>
   </header>
   <div id="main" role="main">
+    <h1>Select Food</h1>
     <select id="foodpick">
       <script type="text/template" class="template">
         <option value="<%= key %>"><%= value %></option>
@@ -26,7 +27,7 @@
     </select>
     <div id="foods">
       <script type="text/template" class="template">
-        <h3><%= key %></h3>
+        <h3><%= key %> (100g)</h3>
       </script>
       <script type="text/template" class="inner-template">
       <span class="bar-label">
