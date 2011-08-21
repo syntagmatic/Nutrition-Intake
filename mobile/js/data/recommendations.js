@@ -23,6 +23,12 @@ var recommendations = {
 	  "rdi": 2,
     "unit": "mg"
   }, 
+  "268": {
+    "dos": [14,15,16,17,04], 
+    "donts": [],
+	  "rdi": 2000,
+    "unit": "kJ"
+  }, 
   "291": {
     "dos": [14,15,16,17,04], 
     "donts": [],
