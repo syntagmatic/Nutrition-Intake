@@ -18,13 +18,16 @@
     <h1>Custom Recommended Daily Intake</h1>
   </header>
   <div id="main" role="main">
-    <form id="rdi" name="rdi">
-      <script type="text/template" class="template">
-        <div class="field">
-          <%= name %>: 
-          <input type="text" class="digit" name="<%= key %>" value="<%= value %>"></input> <%= unit %>
-        </div>
-      </script>
+    <form name="rdi" action="rdi.html">
+      <div id ="rdi">
+        <script type="text/template" class="template">
+          <div class="field">
+            <%= name %>: 
+            <input type="text" class="digit" name="<%= key %>" value="<%= value %>"></input> <%= unit %>
+          </div>
+        </script>
+      </div>
+      <input type="submit" value="See common foods"></input>
     </form>
     </ul>
   </div>
