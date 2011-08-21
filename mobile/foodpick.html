@@ -1,0 +1,44 @@
+﻿<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css?v=1">
+  <script src="js/libs/underscore.js"></script>
+  <script src="js/libs/jquery.min.js"></script>
+  <script src="js/data/foods.js"></script>
+  <script src="js/data/recommendations.js"></script>
+  <script src="js/data/nutrients.js"></script>
+  <script src="js/foodpick.js"></script>
+</head>
+
+<body>
+
+<div id="container">
+  <header>
+    <h1>Foods</h1>
+  </header>
+  <div id="main" role="main">
+    <select id="foodpick">
+      <script type="text/template" class="template">
+        <option value="<%= key %>"><%= value %></option>
+      </script>
+    </select>
+    <div id="foods">
+      <script type="text/template" class="template">
+        <h3><%= key %></h3>
+      </script>
+      <script type="text/template" class="inner-template">
+      <span class="bar-label">
+        <%= key %>: <span class="percent"><%= value %>%</span><bar style="width:<%= width %>px"></bar>
+      </span>
+      </script>
+    </div>
+  </div>
+  
+  <footer>
+
+  </footer>
+</div> <!--! end of #container -->
+</body>
+</html>
