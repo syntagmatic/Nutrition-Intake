@@ -11,8 +11,10 @@ $(function() {
     }
   }
 
-  food_keys = _(foods).keys().slice(800,821);
-  var foods_html = "";
+  food_keys = _(foods).keys().slice(800,803);
+  var foods_html = "",
+      nutrients_html = "";
+  /*
   _(food_keys).each(function(k) {
     foods_html += foods_template({
       key: foods[k].name
@@ -27,8 +29,28 @@ $(function() {
       }
     });
   });
+*/
+  _(recommendations).each(function(v, k) {
+    foods_html += foods_template({
+      key: nutrients[k].name
+    });
+    foods_html += "<span class='row'>";
+    _(food_keys).each(function(f) {
+      _(foods[f]['nutrients']).each(function(nut) {
+        if (nut.id == k) {
+          var rdiW = rdi(nut);
+          foods_html += nutrient_template({
+            key: foods[f].name,
+            value: rdiW,
+            width: rdiW
+          });
+        }
+      });
+    });
+    foods_html += "<span class='clear'></span></span><span class='clear'></span>";
+  });
   $('#foods').append(foods_html);
-
+  
   // percent of rdi for a nutrient
   function rdi(nutrient, value) {
     var fraction = nutrient.amount/recommendations[nutrient.id]['rdi'];
