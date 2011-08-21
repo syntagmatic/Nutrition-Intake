@@ -1,4 +1,16 @@
 var recommendations = {
+  "203": {
+    "dos": [], 
+    "donts": [],
+	  "rdi": 50,
+    "unit": "g"
+  }, 
+  "205": {
+    "dos": [], 
+    "donts": [],
+	  "rdi": 300,
+    "unit": "g"
+  }, 
   "406": {
     "dos": [41,42,43,44,17,39,45], 
     "donts": [46,47,48,30],
@@ -22,6 +34,12 @@ var recommendations = {
     "donts": [],
 	  "rdi": 2,
     "unit": "mg"
+  }, 
+  "418": {
+    "dos": [], 
+    "donts": [],
+	  "rdi": 6,
+    "unit": "mcg"
   }, 
   "268": {
     "dos": [14,15,16,17,04], 
@@ -65,17 +83,41 @@ var recommendations = {
 	  "rdi": 400,
     "unit": "mg"
   }, 
+  "305": {
+    "dos": [], 
+    "donts": [],
+	  "rdi": 1000,
+    "unit": "mg"
+  }, 
   "306": {
     "dos": [11,30], 
     "donts": [31],
 	  "rdi": 4700,
     "unit": "mg"
   }, 
+  "324": {
+    "dos": [], 
+    "donts": [],
+	  "rdi": 400,
+    "unit": "IU"
+  }, 
   "307": {
     "dos": [], 
     "donts": [32,30,01,21,33],
 	  "rdi": 2300,
     "unit": "mg"
+  }, 
+  "309": {
+    "dos": [], 
+    "donts": [],
+	  "rdi": 15,
+    "unit": "mg"
+  }, 
+  "317": {
+    "dos": [], 
+    "donts": [],
+	  "rdi": 70,
+    "unit": "mcg"
   }, 
   "646": {
     "dos": [08,01,09,10,11,12,13], 
@@ -88,6 +130,12 @@ var recommendations = {
     "donts": [03,04,05,06,07,33,64,61,17,56,57],
 	  "rdi": 60,
     "unit": "mg"
+  }, 
+  "601": {
+    "dos": [], 
+    "donts": [],
+	  "rdi": 300,
+    "unit": 'mg'
   }, 
   "606": {
     "dos": [], 
