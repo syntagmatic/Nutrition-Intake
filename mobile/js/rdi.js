@@ -2,7 +2,8 @@ $(function() {
 
   var foods_template = _.template($('#foods .template').html());
   var nutrient_template = _.template($('#foods .inner-template').html());
-  var foodpick_template = _.template($('#foodpick .template').html());
+
+/*var foodpick_template = _.template($('#foodpick .template').html());
 
   var food_names = _(foods).map(function(v,k) {
     return {
@@ -54,8 +55,8 @@ $(function() {
        recommendations[i]['rdi'] = rdi_updates[i];
     }
   }
-
-  food_keys = _(foods).keys().slice(800,803);
+*/
+  food_keys = _(foods).keys().slice(800,806);
   var foods_html = "",
       nutrients_html = "";
 
