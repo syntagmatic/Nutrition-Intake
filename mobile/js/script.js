@@ -7,12 +7,12 @@ $(function() {
       nutrient: nut.name
     });
   }, "");
-  $('#nutrients').append(nut_html);
-  food_subset = _(foods).keys().slice(0, 101);
+  food_subset = _(foods).keys().slice(0, 21);
   food_template = _.template($('#foods .template').html());
   food_html = _(food_subset).reduce(function(html, key) {
     return html += food_template({
-      food: foods[key].name
+      food: foods[key].name,
+      nuts: foods[key].nutrients
     });
   }, "");
   return $('#foods').append(food_html);

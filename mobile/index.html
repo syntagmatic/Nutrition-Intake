@@ -27,7 +27,15 @@
     <h3>Foods</h3>
     <ul id="foods">
       <script type="text/template" class="template">
-        <li><%= food %></li>
+        <li>
+          <strong><%= food %></strong>
+          <ul>
+            <% _(nuts).each(function(nut) { %>
+              <li><% print(nutrients[nut.id].name || 'unkown'); %>:
+                  <span class="bar" style="width:<% print(Math.floor(nut.amount)/3); %>px;height:10px;background:#090;display:inline-block;"></span></li>
+            <% }); %>
+          </ul>
+        </li>
       </script>
     </ul>
   </div>
