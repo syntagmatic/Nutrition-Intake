@@ -31,6 +31,8 @@ $(function() {
     render(picked_food);
   });
 
+  $('#foodpick').val('09038').change();
+
   // Update RDI values if form submission
   var rdi_updates = getUrlVars();
   if (_(rdi_updates).size() > 1) {
