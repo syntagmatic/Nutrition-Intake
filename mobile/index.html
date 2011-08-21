@@ -4,51 +4,17 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="css/style.css?v=1">
-  <script src="js/libs/underscore.js"></script>
-  <script src="js/libs/jquery.min.js"></script>
-  <script src="js/data/foods.js"></script>
-  <script src="js/data/nutrients.js"></script>
-  <script src="js/data/conditions.js"></script>
-  <script src="js/data/recommendations.js"></script>
-  <script src="js/script.js"></script>
-  <style>
-  .bar {
-    height:15px;
-    background:#090;
-    display:inline-block;
-    color:#666;
-  }
-  </style>
 </head>
 
 <body>
 
 <div id="container">
   <header>
-    <h1>Nutrition Networks</h1>
+    <h1>Nutrition Intake</h1>
   </header>
   <div id="main" role="main">
-    <h3>Nutrients</h3>
-    <ul id="nutrients">
-      <script type="text/template" class="template">
-        <li><%= nutrient %></li>
-      </script>
-    </ul>
-    <h3>Foods</h3>
-    <ul id="foods">
-      <script type="text/template" class="template">
-        <li>
-          <strong><%= food %></strong>
-          <ul>
-            <% _(nuts).each(function(nut) { 
-                if (recommendations[nut.id]) {%>
-              <li><% print(nutrients[nut.id].name || 'unkown'); %>:
-                  <span class="bar" style="width:<% print(Math.floor(nut.amount)/3); %>px;"><%=nut.amount%></span></li>
-            <%} }); %>
-          </ul>
-        </li>
-      </script>
-    </ul>
+    <a href="form.html">Customize your Recommended Daily Intake</a><br/>
+    <a href="foodpick.html">Find the nutritional contents of your favorite foods from USDA data</a>
   </div>
   
   <footer>
