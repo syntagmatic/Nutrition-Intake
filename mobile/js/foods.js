@@ -4,10 +4,11 @@ $(function() {
 
   food_keys = _(foods).keys();
   console.log(food_keys.length);
-  var fields_html = _(foods).reduce(function(html, v, k) {
-    return html += foods_template({
-      key: v.name
+  var foods_html = "";
+  _(food_keys).each(function(k) {
+    foods_html += foods_template({
+      key: foods[k].name
     });
-  }, "");
-  $('#foods').append(fields_html);
+  });
+  $('#foods').append(foods_html);
 });
