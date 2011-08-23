@@ -83,5 +83,5 @@ for group in _foodgroups:
     name = group['name'].lower().replace(' ', '_').replace(',', '')
     f = open('json/groups/' + name + '.js', 'w' )
     f.write('var foodgroups = foodgroups || {};\n')
-    f.write('var foodgroups[' + group['id'] + ']=' + json.dumps(foodgroups[group['id']], separators = (',', ':')) + ';')
+    f.write('foodgroups[' + group['id'] + ']=' + json.dumps(foodgroups[group['id']], separators = (',', ':')) + ';')
     f.close()
