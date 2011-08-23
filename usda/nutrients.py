@@ -14,7 +14,9 @@ sources = {
 data = {}
 nutrients = {}
 foods = {}
+_foods = []
 foodgroups = {}
+_foodgroups = []
 
 for k,v in sources.iteritems():
     source = csv.reader(open(v, 'rb'), delimiter='^', quotechar='~')
@@ -23,22 +25,37 @@ for k,v in sources.iteritems():
         data[k].append(i)
 
 # Nutrients
+"""
 for nut in data['nutrients']:
     nutrients[nut[0]] = {
         'name': nut[3],
         'tagname': nut[2],
         'unit': nut[1],
     }
+"""
+
+# Food Groups
+for group in data['food_groups']:
+    foodgroups[group[0]] = {
+        'name': group[1],
+        'foods': [],
+    }
 
 # Food
-"""
 for food in data['food']:
     foods[food[0]] = {
         'name': food[2],
         'foodgroup':food[1],
         'nutrients':[],
     }
+    _foods.append({
+        'id': food[0],
+        'name': food[2],
+        'foodgroup':food[1],
+        'nutrients':[],
+    })
 
+# Nutrients
 for item in data['data']:
     amount = float(item[2])
     if amount > 0.001:
@@ -47,13 +64,26 @@ for item in data['data']:
             'amount': amount,
         }
         foods[item[0]]['nutrients'].append(nut)
-"""
-# Food Groups
-"""
-for food in data['food_groups']:
-    foodgroups[food[0]] = food[1]
-"""
 
-f = open('json/nutrients.js', 'w' )
-f.write('var data = ' + json.dumps(nutrients, indent=2) + ';')
-f.close()
+# Group Foods by Group
+for food in _foods:
+    foodgroups[food['foodgroup']]['foods'].append({
+        'id': food['id'],
+        'name': food['name'],
+        'nutrients': food['nutrients'],
+    })
+    _foodgroups.append({
+        'groupname': foodgroups[food['foodgroup']]['name'],
+        'group': food['foodgroup'],
+        'id': food['id'],
+        'name': food['name'],
+        'nutrients': food['nutrients'],
+    })
+
+# Save Foods by Group
+for group in _foodgroups:
+    name = group['groupname'].lower().replace(' ', '_').replace(',', '')
+    f = open('json/groups/' + name + '.js', 'w' )
+    f.write('var foodgroups = foodgroups || {};\n')
+    f.write('var foodgroups[' + group['group'] + '] = ' + json.dumps(foodgroups[group['group']], indent = 2) + ';')
+    f.close()
