@@ -40,6 +40,11 @@ for group in data['food_groups']:
         'name': group[1],
         'foods': [],
     }
+    _foodgroups.append({
+        'id': group[0],
+        'name': group[1],
+        'foods': [],
+    })
 
 # Food
 for food in data['food']:
@@ -70,20 +75,13 @@ for food in _foods:
     foodgroups[food['foodgroup']]['foods'].append({
         'id': food['id'],
         'name': food['name'],
-        'nutrients': food['nutrients'],
-    })
-    _foodgroups.append({
-        'groupname': foodgroups[food['foodgroup']]['name'],
-        'group': food['foodgroup'],
-        'id': food['id'],
-        'name': food['name'],
-        'nutrients': food['nutrients'],
+        'nutrients': foods[food['id']]['nutrients'],
     })
 
 # Save Foods by Group
 for group in _foodgroups:
-    name = group['groupname'].lower().replace(' ', '_').replace(',', '')
+    name = group['name'].lower().replace(' ', '_').replace(',', '')
     f = open('json/groups/' + name + '.js', 'w' )
     f.write('var foodgroups = foodgroups || {};\n')
-    f.write('var foodgroups[' + group['group'] + '] = ' + json.dumps(foodgroups[group['group']], indent = 2) + ';')
+    f.write('var foodgroups[' + group['id'] + ']=' + json.dumps(foodgroups[group['id']], separators = (',', ':')) + ';')
     f.close()
