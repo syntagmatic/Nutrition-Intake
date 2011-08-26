@@ -7,18 +7,19 @@
 <script src="js/libs/underscore.js"></script>
 <script src="js/libs/raphael.js"></script>
 <script src="js/data/groups/ethnic_foods.js"></script>
+<script src="js/data/nutrients.js"></script>
 <script>
 var foods = foodgroups[3500].foods;
-var nutrients = {};
+var nuts = {};
 var _i = 0;
 _(foods)
   .chain()
   .pluck('nutrients')
   .flatten()
   .each(function(nut) {
-    nutrients[nut.id] = nutrients[nut.id] || {max: 0, i: _i++};
-    if (nut.amount > nutrients[nut.id].max)
-      nutrients[nut.id].max = nut.amount;
+    nuts[nut.id] = nuts[nut.id] || {max: 0, i: _i++};
+    if (nut.amount > nuts[nut.id].max)
+      nuts[nut.id].max = nut.amount;
   });
 
 
@@ -26,16 +27,22 @@ $(function() {
   var canvas = document.getElementById('chart');
   if (canvas.getContext){
     var c = canvas.getContext('2d');
-    c.font = "7px Helvetica";
-    c.strokeStyle = "black";
-    _(nutrients).each(function(v,k) {
-      c.fillText(k, 0, 7*v.i);
-    });
+    c.font = "9px Verdana";
+    c.textAlign = "right";
     _(foods).each(function(food, i) {
+      c.fillStyle = "#333";
+      c.fillText(food.name.substring(0,40), 210, 116+9*i);
       _(food.nutrients).each(function(nut, j) {
-        c.fillStyle = intensity(nut.amount/nutrients[nut.id].max);
-        c.fillRect(20 + 7*i,7*nutrients[nut.id].i,7,7);
+        c.fillStyle = intensity(nut.amount/nuts[nut.id].max);
+        c.fillRect(214+9*nuts[nut.id].i, 110+9*i, 8, 8);
       });
+    });
+    c.translate(220,105);
+    c.rotate(-Math.PI/2);
+    c.textAlign = "left";
+    c.fillStyle = "#333";
+    _(nuts).each(function(v,k) {
+      c.fillText(nutrients[k].name, 0, 9*v.i);
     });
   } else {
     alert('This visualization requires a browser which supports canvas');
@@ -46,7 +53,7 @@ function randomColor() {
   return ["rgb(", Math.round(255*Math.random()), ",", Math.round(255*Math.random()), ",", Math.round(255*Math.random()), ")"].join("");
 };
 function intensity(i) {
-  return ["rgb(20,", Math.round(255*i), ",20)"].join("");
+  return ["rgb(", Math.round(238-238*i),",", Math.round(238-238*i), ",", Math.round(238-238*i), ")"].join("");
 };
 </script>
 </head>
@@ -56,7 +63,7 @@ function intensity(i) {
     <h1>Matrix Plot</h1>
   </header>
   <div id="main">
-    <canvas id="chart" width="1300" height="900"></canvas>
+    <canvas id="chart" width="1400" height="1600"></canvas>
   </div>
 </div>
 </body>
