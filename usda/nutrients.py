@@ -72,10 +72,14 @@ for item in data['data']:
 
 # Group Foods by Group
 for food in _foods:
+    value = 0;
+    for nut in foods[food['id']]['nutrients']:
+        value += nut['amount']
     foodgroups[food['foodgroup']]['foods'].append({
         'id': food['id'],
         'name': food['name'],
         'nutrients': foods[food['id']]['nutrients'],
+        'value':value,
     })
 
 # Save Foods by Group
